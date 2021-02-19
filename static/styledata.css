@@ -1,0 +1,25 @@
+body{
+    background:center/cover no-repeat  url('./ballet.jpg');
+}
+h1{
+    text-align: center;
+    color:blue;
+    margin: 12px 10px;
+    font-size: 3rem;
+}
+
+.table th
+{
+    margin: 10px 15px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: black;
+    background-color: cornflowerblue;
+}
+
+.table1 tr th li 
+{
+    list-style: none;
+    background-color: cornsilk;
+    color: blue;
+}

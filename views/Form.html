@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="./style.css"/>
+    <script src="./index.js"></script>
+    
+</head>
+
+<body>
+
+    <div class="container">
+        <form action="/" name="Myform"  onsubmit=" return validation()" method="POST">
+            <h1>Welcome to Our Dance Academy</h1>
+
+            <div class="formdisigen" id="name">
+                Name: <input
+                    type="text"
+                    name="name"
+                    required
+                    placeholder="Enter your Name"
+                    minlength="5">
+                <br><span class="Formerror"> </span>
+            </div>
+
+            <div class="DOB" id="DOB">
+                DOB: <input 
+                name="dob" required 
+                type="text"
+                     onfocus="(this.type='date')"  
+                 onfocusout="(this.type='text')"  
+                 
+                    placeholder="Enter your date of birth">
+                    <br><span class="Formerror"> </span>
+            </div>
+
+            <div class="formdisigen" id="email">
+                Email: <input type="email" name="email" required placeholder="Enter your E-mail Address">
+                <br><span class="Formerror"> </span>
+            </div>
+            <div class="formdisigen" id="phone">
+                Phone: <input
+                 type="text" 
+                 name="phone"
+				 required
+                 placeholder="Enter your Contact Number"
+				 minlength="10"
+				 pattern="[0-9]*">
+                <br><span class="Formerror"> </span>
+            </div>
+
+            <div class="btn">
+                <button  >Submit Now</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

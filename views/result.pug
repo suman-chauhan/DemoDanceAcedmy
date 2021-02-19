@@ -1,0 +1,63 @@
+//- layout.pug
+//- index.pug
+doctype html
+html
+  head
+    title My Data
+    style
+      include ../static/styledata.css
+        
+  body
+    h1 View your Entered Details
+            
+
+center
+  table.mytable(border='2')
+    thead.table
+      tr
+        th Created At
+        th Name
+        th Date of birth
+        th  E-mail Address
+        th Contact Number 
+    tbody.table1
+       tr
+       th
+        each val in myTestKey
+          li=val.created_at
+          hr
+       th
+           each val in myTestKey
+             li= val.name
+             hr
+       th
+           each val in myTestKey
+             li= val.dob 
+             hr
+       th
+           each val in myTestKey
+             li= val.email
+             hr
+       th
+           each val in myTestKey
+             li= val.phone
+             hr
+              
+           
+              
+           
+           
+             
+           
+             
+           
+         
+          
+       
+      
+     
+
+      
+                        
+                                
+                                

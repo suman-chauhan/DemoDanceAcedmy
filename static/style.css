@@ -1,0 +1,79 @@
+body{
+padding: 10px 50px;
+background-image: url('./ballet.jpg');
+}
+.formdisigen
+{
+font-size: 20px;
+}
+
+.formdisigen input
+{
+    width: 50%;
+            padding: 12px 20px;
+            border: 1px solid blue;
+            margin: 14px;
+            border-radius: 4px;
+            font-size: 15px;
+            color: blue;
+            background-color:hotpink;
+}
+
+.container{
+    margin-top: 125px;
+    text-align: center;
+    border: 2px solid black;
+    width: 45%;
+    display: flex;
+    margin-left: 288px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-image: url('./ballet.jpg');
+    height: 80%;
+}
+
+h1
+{
+    color: blue;
+}
+
+.DOB 
+{
+    font-size: 19px;
+}
+
+.DOB input
+{
+    width: 50%;
+    padding: 12px 20px;
+    border: 1px solid blue;
+    margin: 14px;
+    border-radius: 4px;
+    font-size: 15px;
+    color: blue;
+    background-color:hotpink;
+    margin-left: 20px;
+    
+    
+}
+
+.btn
+{
+    font-size: 15px;
+    margin: 10px 20px;
+    padding: 10px 20px;
+}
+.btn button
+{
+    margin: 2px 3px;
+    padding: 10px 20px;
+    background-color: blue;
+    border: 2px solid black;
+    border-radius: 8px;
+    color: wheat;
+
+}
+.Formerror{
+    color: red;
+}
