@@ -1,6 +1,6 @@
 const express = require("express");
 const nodemailer = require("nodemailer");
-const hostname  = '127.0.0.1';
+// const hostname  = '127.0.0.1';
 const app = express();
 const bodyparser=require('body-parser');
 const { body, validationResult, check } = require('express-validator');
@@ -114,6 +114,6 @@ transporter.sendMail(mailOptions, function(error, info){
 }
 
 
-app.listen(port,hostname, ()=>{
+app.listen(port, ()=>{
     console.log(`running on http://${hostname}:${port}`);
 });
