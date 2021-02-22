@@ -80,8 +80,8 @@ app.post('/',(req,res)=>
         })
         .catch((err) => console.log("GOt Error : "+err));
 
-        res.statusCode=200;
-        res.sendFile( path.join(__dirname ,"static" ,"AllData.html"));
+       // res.statusCode=200;
+       // res.sendFile( path.join(__dirname ,"static" ,"AllData.html"));
     }).catch((error)=>
     {
         res.status(400).send("Form has been not submitted sucessfully "+ error);
