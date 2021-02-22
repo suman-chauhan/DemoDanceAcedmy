@@ -115,5 +115,5 @@ transporter.sendMail(mailOptions, function(error, info){
 
 
 app.listen(port, ()=>{
-    console.log(`running on http://${hostname}:${port}`);
+    console.log(`running on port ${port}`);
 });
