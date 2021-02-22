@@ -33,7 +33,8 @@ let urlencoded=bodyparser.urlencoded({extended: false});
 // database
 const mongoose = require('mongoose');
 const { response } = require("express");
-mongoose.connect('mongodb://localhost/form',
+const mongoURI = process.env.MONGO_URI;
+mongoose.connect(mongoURI,
  {useNewUrlParser: true, useUnifiedTopology: true});
  //define port
 const port = process.env.PORT || 5000;
@@ -89,16 +90,18 @@ app.post('/',(req,res)=>
 });
 
 function sendEmail(userInfo){
+	const gmailAccount = process.env.SENDER_EMAIL;
+	const gmailPass = process.env.SENDER_EMAIL_PASS;
 	const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: '<ENTER_YOUR_EMAL_ADDESS>',
-    pass: '<ENTER_YOUR_PASSWORD>'
+    user: gmailAccount,
+    pass: gmailPass
   }
 });
 
 const mailOptions = {
-  from: '<ENTER_YOUR_EMAL_ADDESS>',
+  from: gmailAccount,
   to: userInfo.email,
   subject: 'Dance Acdemy',
   text: 'Welcome '+ userInfo.name + ',\nTo our dance accedy phonenu: '+userInfo.phone
