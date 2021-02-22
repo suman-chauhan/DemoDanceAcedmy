@@ -104,7 +104,7 @@ const mailOptions = {
   from: gmailAccount,
   to: userInfo.email,
   subject: 'Dance Acdemy',
-  text: 'Welcome '+ userInfo.name + ',\nTo our dance accedy phonenu: '+userInfo.phone
+  text: 'Welcome '+ userInfo.name + ',\nTo our DEMO DANCE ACADEMY\n Regards\nDEMO ACADEMY'
 };
 
 transporter.sendMail(mailOptions, function(error, info){
