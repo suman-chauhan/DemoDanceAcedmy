@@ -6,58 +6,189 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
-    <link rel="stylesheet" href="./style.css"/>
-    <script src="./index.js"></script>
-    
+    <!-- <link rel="stylesheet" href="../static/style.css"/> -->
+    <script src="../static/index.js"></script>
+
+    <style>
+        body {
+            padding: 10px 50px;
+            background-image: url('./ballet.jpg');
+        }
+
+        .formdisigen {
+            font-size: 20px;
+        }
+
+        .formdisigen input {
+            width: 50%;
+            padding: 12px 20px;
+            border: 1px solid blue;
+            margin: 14px;
+            border-radius: 4px;
+            font-size: 15px;
+            color: blue;
+            background-color: hotpink;
+        }
+
+        .container {
+            margin-top: 125px;
+            text-align: center;
+            border: 2px solid black;
+            width: 45%;
+            display: flex;
+            margin-left: 288px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            background-image: url('./ballet.jpg');
+            height: 80%;
+        }
+
+        h1 {
+            color: blue;
+        }
+
+        .DOB {
+            font-size: 19px;
+        }
+
+        .DOB input {
+            width: 50%;
+            padding: 12px 20px;
+            border: 1px solid blue;
+            margin: 14px;
+            border-radius: 4px;
+            font-size: 15px;
+            color: blue;
+            background-color: hotpink;
+            margin-left: 20px;
+
+
+        }
+
+        .btn {
+            font-size: 15px;
+            margin: 10px 20px;
+            padding: 10px 20px;
+        }
+
+        .btn button {
+            margin: 2px 3px;
+            padding: 10px 20px;
+            background-color: blue;
+            border: 2px solid black;
+            border-radius: 8px;
+            color: wheat;
+
+        }
+
+        .Formerror {
+            color: red;
+        }
+    </style>
+
 </head>
 
 <body>
 
     <div class="container">
-        <form action="/" name="Myform"  onsubmit=" return validation()" method="POST">
+        <form action="/" name="Myform" onsubmit=" return validation()" method="POST">
             <h1>Welcome to Our Dance Academy</h1>
 
             <div class="formdisigen" id="name">
-                Name: <input
-                    type="text"
-                    name="name"
-                    required
-                    placeholder="Enter your Name"
-                    minlength="5">
+                Name: <input type="text" name="name" required placeholder="Enter your Name" minlength="3" maxlength="15"
+                    pattern="[a-z]*">
                 <br><span class="Formerror"> </span>
             </div>
 
             <div class="DOB" id="DOB">
-                DOB: <input 
-                name="dob" required 
-                type="text"
-                     onfocus="(this.type='date')"  
-                 onfocusout="(this.type='text')"  
-                 
+                DOB: <input name="dob" type="text" onfocus="(this.type='date')" onfocusout="(this.type='text')"
                     placeholder="Enter your date of birth">
-                    <br><span class="Formerror"> </span>
+                <br><span class="Formerror"> </span>
             </div>
 
             <div class="formdisigen" id="email">
-                Email: <input type="email" name="email" required placeholder="Enter your E-mail Address">
+                Email: <input type="email" required name="email" required placeholder="Enter your E-mail Address">
                 <br><span class="Formerror"> </span>
             </div>
             <div class="formdisigen" id="phone">
-                Phone: <input
-                 type="text" 
-                 name="phone"
-				 required
-                 placeholder="Enter your Contact Number"
-				 minlength="10"
-				 pattern="[0-9]*">
+                Phone: <input type="text" name="phone" required minlength="10" maxlength="10" pattern="[0-9]*
+                  placeholder=" Enter your Contact Number">
                 <br><span class="Formerror"> </span>
             </div>
 
             <div class="btn">
-                <button  >Submit Now</button>
+                <button onclick="validation()">Submit Now</button>
             </div>
         </form>
     </div>
 </body>
+<script>
+    function submitEmailForm(form) {
+        var obj = new XMLHttpRequest();
+        obj.onreadystatechange = function () {
+            if (obj.readyState == 4) {
+                if (obj.status == 200) {
+                    var res = JSON.parse(obj.responseText);
+                    alert(res.message);
+                } else {
+                    alert("XMLHttp status " + obj.status + ": " + obj.statusText);
+                }
+            }
+        };
+        obj.open("post", form.action, true);
+        obj.setRequestHeader("Content-Type", "application/json"); // NOTICE: "application/json"
+        obj.send(JSON.stringify({
+            name: form.name.value,
+            email: form.email.value,
+            message: form.message.value
+        }));
+        return false;
+    }
+
+    function validation() {
+        var returnval = true;
+        var DOB = document.forms['Myform']["dob"].value;
+        var millisecondsBetweenDOBAnd1970 = Date.parse(DOB);
+        var millisecondsBetweenNowAnd1970 = Date.now();
+        var ageInMilliseconds = millisecondsBetweenNowAnd1970 - millisecondsBetweenDOBAnd1970;
+        //--We will leverage Date.parse and now method to calculate age in milliseconds refer here https://www.w3schools.com/jsref/jsref_parse.asp
+
+        var milliseconds = ageInMilliseconds;
+        var second = 1000;
+        var minute = second * 60;
+        var hour = minute * 60;
+        var day = hour * 24;
+        var month = day * 30;
+        /*using 30 as base as months can have 28, 29, 30 or 31 days depending a month in a year it itself is a different piece of comuptation*/
+        var year = day * 365;
+
+        //let the age conversion begin
+        var years = Math.round(milliseconds / year);
+        var months = years * 12;
+        var days = years * 365;
+        var hours = Math.round(milliseconds / hour);
+        var seconds = Math.round(milliseconds / second);
+
+        if (years < 18) {
+            seterror("DOB", "*You are Under age to fill this form");
+            returnval = false;
+
+        }
+
+
+        return returnval;
+
+
+    }
+
+
+    function seterror(id, error) {
+        //sets error inside tag of id 
+        element = document.getElementById(id);
+        element.getElementsByClassName('Formerror')[0].innerHTML = error;
+
+    }
+</script>
 
 </html>
