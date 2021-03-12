@@ -167,7 +167,7 @@ app.post('/',
         sendEmail(req.body);
         const userData = Form.find({});
         userData.exec().then((data) => {
-
+          console.log(data);
             const param = {
               myTestKey: data
             };
